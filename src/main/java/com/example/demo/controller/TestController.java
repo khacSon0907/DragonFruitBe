@@ -11,6 +11,6 @@ public class TestController {
 
     @GetMapping("/hello")
     public String test(){
-        return "Tôi nè anh em , anh yêu kelly nhiều lắm ";
+        return "luumj dia anh em ";
     }
 }
