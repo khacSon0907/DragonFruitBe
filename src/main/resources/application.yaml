@@ -1,2 +1,37 @@
 server:
   port: ${PORT:8080}
+
+spring:
+  application:
+    name: dragon-fruit-be
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+
+    redis:
+      url: ${REDIS_URL}
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+# JWT config
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION}
+
+# Logging (debug khi cần)
+logging:
+  level:
+    org.springframework.data.mongodb: INFO
+    org.springframework.data.redis: INFO
+
+# Swagger (nếu bạn dùng)
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
