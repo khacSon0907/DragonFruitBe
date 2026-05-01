@@ -9,12 +9,13 @@ import com.example.demo.shared.exception.BusinessException;
 import com.example.demo.shared.exception.user.UserError;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Component
+
+@Service
 @RequiredArgsConstructor
 public class CreateUserUcImpl implements ICreateUserUc {
 

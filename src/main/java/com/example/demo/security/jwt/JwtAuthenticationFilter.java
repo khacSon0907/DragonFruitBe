@@ -57,7 +57,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             TokenPayload tokenPayload = jwtService.validateAccessToken(token);
 
             // Kiểm tra xem đã có authentication chưa
-            if (tokenPayload.getUsername() != null &&
+            if (tokenPayload.getFullName() != null &&
                     SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 // Tạo Authentication object với role từ token

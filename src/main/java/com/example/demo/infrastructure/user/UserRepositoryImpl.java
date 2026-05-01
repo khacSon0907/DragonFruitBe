@@ -49,4 +49,10 @@ public class UserRepositoryImpl implements IUserRepository {
     public boolean existsByPhoneNumber(String phoneNumber) {
         return mongoRepository.existsByPhoneNumber(phoneNumber);
     }
+
+    @Override
+    public Optional<UserEntity> findByFullName(String fullName) {
+        return mongoRepository.findByFullName(fullName)
+                .map(UserMapper::toEntity);
+    }
 }

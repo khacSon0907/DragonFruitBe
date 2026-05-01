@@ -14,6 +14,8 @@ public interface IUserRepository {
 
     Optional<UserEntity> findByPhoneNumber(String phoneNumber);
 
+    Optional<UserEntity> findByFullName(String fullName);
+
     boolean existsByEmail(String email);
 
     boolean existsByPhoneNumber(String phoneNumber);

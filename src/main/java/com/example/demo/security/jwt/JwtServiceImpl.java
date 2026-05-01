@@ -32,7 +32,7 @@ public class JwtServiceImpl implements IJwtService {
 
         return Jwts.builder()
                 .setSubject(payload.getUserId())
-                .claim("username", payload.getUsername())
+                .claim("fullName", payload.getFullName())
                 .claim("email", payload.getEmail())
                 .claim("role", payload.getRole())
                 .claim("type", "ACCESS")
@@ -52,7 +52,7 @@ public class JwtServiceImpl implements IJwtService {
 
         return Jwts.builder()
                 .setSubject(payload.getUserId())
-                .claim("username", payload.getUsername())
+                .claim("fullName", payload.getFullName())
                 .claim("email", payload.getEmail())
                 .claim("role", payload.getRole())
                 .claim("type", "REFRESH")
@@ -90,7 +90,7 @@ public class JwtServiceImpl implements IJwtService {
 
             return TokenPayload.builder()
                     .userId(claims.getSubject())
-                    .username(claims.get("username", String.class))
+                    .fullName(claims.get("username", String.class))
                     .email(claims.get("email", String.class))
                     .role(claims.get("role", String.class))
                     .build();

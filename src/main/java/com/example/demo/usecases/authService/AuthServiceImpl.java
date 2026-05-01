@@ -6,6 +6,8 @@ import com.example.demo.domain.dto.request.RefreshTokenReq;
 import com.example.demo.domain.dto.respone.LoginRes;
 import com.example.demo.domain.dto.respone.RefreshTokenRes;
 import com.example.demo.domain.dto.respone.RegisterRespone;
+import com.example.demo.usecases.authService.loginUc.ILoginUc;
+import com.example.demo.usecases.authService.registerUC.IRegisterUc;
 import com.example.demo.usecases.useService.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,21 +17,17 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements IAuthService {
 
     private final IUserService userService;
+    private final IRegisterUc registerUc;
+    private final ILoginUc loginUc;
 
     @Override
     public RegisterRespone register(CreateUserReq req) {
-        var createResponse = userService.createUser(req);
-        return RegisterRespone.builder()
-                .userId(createResponse.getUserId())
-                .email(createResponse.getEmail())
-                .message(createResponse.getMessage())
-                .build();
+        return  registerUc.process(req);
     }
 
     @Override
     public LoginRes login(LoginReq req) {
-        // TODO: Implement login logic
-        return null;
+        return loginUc.login(req);
     }
 
     @Override
