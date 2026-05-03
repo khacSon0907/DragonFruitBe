@@ -82,6 +82,7 @@ public class AuthController {
     ) {
         String refreshToken = CookieUtil.getCookie(request, "refreshToken");
 
+        System.out.println("Refresh token from cookie: " + refreshToken); // ✅ log token để debug
         if (refreshToken == null) {
             throw new RuntimeException("Refresh token not found");
         }
@@ -122,10 +123,12 @@ public class AuthController {
             HttpServletResponse response
     ) {
         String authHeader = request.getHeader("Authorization");
+
         String accessToken = null;
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             accessToken = authHeader.substring(7);
         }
+
         authService.logout(accessToken);
         // xoá refresh token cookie
         CookieUtil.clearCookie(

@@ -7,6 +7,8 @@ import com.example.demo.domain.dto.respone.LoginRes;
 import com.example.demo.domain.dto.respone.RefreshTokenRes;
 import com.example.demo.domain.dto.respone.RegisterRespone;
 import com.example.demo.usecases.authService.loginUc.ILoginUc;
+import com.example.demo.usecases.authService.logoutUc.ILogoutUc;
+import com.example.demo.usecases.authService.refreshTokenUc.IRefreshTokenUc;
 import com.example.demo.usecases.authService.registerUC.IRegisterUc;
 import com.example.demo.usecases.useService.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,8 @@ public class AuthServiceImpl implements IAuthService {
     private final IUserService userService;
     private final IRegisterUc registerUc;
     private final ILoginUc loginUc;
+    private final IRefreshTokenUc refreshTokenUc;
+    private final ILogoutUc logoutUc;
 
     @Override
     public RegisterRespone register(CreateUserReq req) {
@@ -32,12 +36,11 @@ public class AuthServiceImpl implements IAuthService {
 
     @Override
     public RefreshTokenRes refreshToken(RefreshTokenReq req) {
-        // TODO: Implement refresh token logic
-        return null;
+        return refreshTokenUc.refreshToken(req);
     }
 
     @Override
     public void logout(String accessToken) {
-        // TODO: Implement logout logic
+        logoutUc.logout(accessToken);
     }
 }
